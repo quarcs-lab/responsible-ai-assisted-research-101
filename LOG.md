@@ -7,14 +7,16 @@ reader can jump to the detail. This file answers *what happened, in order* (see
 
 Template:
 
-```
+```text
 ## YYYY-MM-DD
+
 - <what I did and what I found, in plain words>. (commit <sha> / issue #N)
 ```
 
 ---
 
 ## 2026-07-06
+
 - Set up the repository as a responsible AI-assisted research template: wrote the
   agent operating manual (`CLAUDE.md`), the README, the issue/PR templates, and
   the CI that compiles the paper. Pinned the Python environment in
@@ -47,6 +49,7 @@ Template:
   by stripping the PDF timestamp; figures are now byte-identical across runs.
 
 ## 2026-07-06 (issue #1 — conditional convergence)
+
 - Per #1, added **conditional** β-convergence with the Solow controls (investment,
   population growth, human capital). The result flips: conditional β = −0.0131
   (p < 0.001, R² = 0.60), an implied convergence speed of ~2.5%/yr (half-life ~28

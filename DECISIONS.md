@@ -10,10 +10,11 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
 
 ---
 
-### Entry template (copy this)
+## Entry template (copy this)
 
-```
+```text
 ## D-000N: <short title of the decision>
+
 - **Date:** YYYY-MM-DD
 - **Status:** Proposed | Accepted | Superseded by D-000M
 - **Decision:** <what was chosen, in one sentence>
@@ -31,6 +32,7 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
 <!-- Decisions are appended below as the analysis develops. -->
 
 ## D-0001: Measure income as real GDP per capita, `rgdpna / pop`
+
 - **Date:** 2026-07-06
 - **Status:** Accepted
 - **Decision:** Use PWT 11.0 `rgdpna` (real GDP at constant 2021 national prices)
@@ -52,6 +54,7 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
 - **Trail:** `code/config.py` (`INCOME_MEASURE`), `code/01_build.py` (this commit).
 
 ## D-0002: Growth window 1960–2019; drop PPP outliers at the endpoints
+
 - **Date:** 2026-07-06
 - **Status:** Accepted
 - **Decision:** Study the window 1960–2019, and drop a country if it is flagged
@@ -73,6 +76,7 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
   `code/01_build.py`, `tables/attrition.tex` (this commit).
 
 ## D-0003: Estimate by OLS with robust SEs; derive λ from β (not λ = −β)
+
 - **Date:** 2026-07-06
 - **Status:** Accepted
 - **Decision:** Estimate absolute β-convergence, g_i = α + β·y_{i,1960} + ε_i, by
@@ -93,6 +97,7 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
 - **Trail:** `code/02_analyze.py` (`implied_lambda`), `tables/convergence_regressions.tex`.
 
 ## D-0004: Emit results with statsmodels + a small in-repo LaTeX helper
+
 - **Date:** 2026-07-06
 - **Status:** Accepted
 - **Decision:** Fit models with `statsmodels` and turn them into LaTeX with a
@@ -111,6 +116,7 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
 - **Trail:** `code/latexout.py`, `requirements.txt`.
 
 ## D-0005: Conditional convergence controls = investment, population growth, human capital
+
 - **Date:** 2026-07-06
 - **Status:** Accepted
 - **Decision:** Condition on the augmented-Solow determinants of the steady state,
