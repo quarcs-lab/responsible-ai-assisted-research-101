@@ -33,3 +33,6 @@ Template:
   of log income actually **rose** from 1.02 (1960) to 1.21 (2019). Tables and
   in-text macros are emitted to `tables/`. Decisions D-0003 (estimation) and
   D-0004 (toolchain) logged.
+- Made the two figures: the initial-income-vs-growth scatter (visibly flat,
+  confirming no absolute convergence) and the σ-dispersion time series (rising).
+  Saved as PDFs in `figures/`.
