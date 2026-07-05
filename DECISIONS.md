@@ -71,3 +71,41 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
   attrition table lets a reviewer re-derive the sample exactly.
 - **Trail:** `code/config.py` (`START_YEAR`, `END_YEAR`, `DROP_OUTLIERS`),
   `code/01_build.py`, `tables/attrition.tex` (this commit).
+
+## D-0003: Estimate by OLS with robust SEs; derive λ from β (not λ = −β)
+- **Date:** 2026-07-06
+- **Status:** Accepted
+- **Decision:** Estimate absolute β-convergence, g_i = α + β·y_{i,1960} + ε_i, by
+  OLS with heteroskedasticity-robust (HC1) standard errors, and compute the
+  implied convergence speed as λ = −ln(1 + βT)/T with half-life ln2/λ.
+- **Context / question:** How to estimate the convergence regression and how to
+  translate the slope β into an interpretable speed.
+- **Alternatives rejected:**
+  - Classical (homoskedastic) SEs — cross-country growth variances differ
+    markedly; HC1 is the safer default.
+  - The shortcut λ = −β — only a first-order approximation; it is wrong for the
+    long horizon here (T = 59) and overstates the speed.
+- **Rationale:** HC1 is standard for cross-country regressions; the exact
+  Solow-linearization formula for λ is correct and guards the domain (defined
+  only when 1 + βT > 0, i.e. when there is convergence).
+- **Confidence:** High — textbook specification; the λ formula is derived in the
+  Methods section of the manuscript.
+- **Trail:** `code/02_analyze.py` (`implied_lambda`), `tables/convergence_regressions.tex`.
+
+## D-0004: Emit results with statsmodels + a small in-repo LaTeX helper
+- **Date:** 2026-07-06
+- **Status:** Accepted
+- **Decision:** Fit models with `statsmodels` and turn them into LaTeX with a
+  ~120-line helper (`code/latexout.py`) rather than a dedicated table package.
+- **Context / question:** How to satisfy the "no hand-typed numbers" rule —
+  regression tables and in-text numbers must be code-emitted LaTeX.
+- **Alternatives rejected:**
+  - `stargazer` — lightly maintained; cannot easily add the implied-λ/half-life
+    rows we want, and adds a dependency prone to API drift.
+  - `pyfixest` (`etable`) — elegant, but pulls in `numba` and is sensitive to the
+    Python version, which hurts install robustness for students.
+- **Rationale:** The custom helper has zero heavy dependencies, installs anywhere,
+  gives full control over the table (stars, robust SEs, λ/half-life rows), and is
+  transparent — a reader sees exactly how a number becomes LaTeX.
+- **Confidence:** High — the whole pipeline runs on a minimal, pinned stack.
+- **Trail:** `code/latexout.py`, `requirements.txt`.

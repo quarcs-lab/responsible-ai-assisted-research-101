@@ -26,3 +26,10 @@ Template:
   Solow controls are required); every dropped country is listed in
   `tables/attrition.tex`. Also built a 105-country balanced panel for the
   dispersion analysis. Choices logged as D-0001 and D-0002.
+- Ran the absolute β-convergence regression (average annual growth on log initial
+  GDP per capita) with robust SEs. The coefficient is small and **not
+  significant** (β = −0.0017, p = 0.17, R² = 0.02) — no absolute convergence, the
+  classic textbook result. Also computed σ-convergence: cross-country dispersion
+  of log income actually **rose** from 1.02 (1960) to 1.21 (2019). Tables and
+  in-text macros are emitted to `tables/`. Decisions D-0003 (estimation) and
+  D-0004 (toolchain) logged.
