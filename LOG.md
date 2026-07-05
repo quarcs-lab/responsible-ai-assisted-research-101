@@ -20,3 +20,9 @@ Template:
   the CI that compiles the paper. Pinned the Python environment in
   `requirements.txt`. Nothing analytical yet — this commit is the scaffold and
   the rules of the road.
+- Built the analysis datasets from `pwt110.dta`: income per capita is
+  `rgdpna/pop`; kept the 1960–2019 window and dropped PPP outliers and countries
+  missing an endpoint. The estimation sample is **105 countries** (99 once the
+  Solow controls are required); every dropped country is listed in
+  `tables/attrition.tex`. Also built a 105-country balanced panel for the
+  dispersion analysis. Choices logged as D-0001 and D-0002.
