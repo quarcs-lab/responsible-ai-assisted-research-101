@@ -36,3 +36,9 @@ Template:
 - Made the two figures: the initial-income-vs-growth scatter (visibly flat,
   confirming no absolute convergence) and the σ-dispersion time series (rising).
   Saved as PDFs in `figures/`.
+- Wrote the manuscript (Abstract, Introduction, Data, Methods, Results,
+  Conclusions, References). Every number is pulled in via `\input{}` or an
+  `estimates.tex` macro — nothing is typed by hand. Compiled it locally with
+  latexmk: 4 pages, all citations resolve. The paper reports the honest null
+  (no absolute β-convergence, σ-divergence) and flags conditional convergence as
+  the next step.
