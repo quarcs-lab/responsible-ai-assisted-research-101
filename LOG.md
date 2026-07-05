@@ -45,3 +45,13 @@ Template:
 - Reproducibility check caught a bug: re-running the pipeline changed the figure
   PDFs (matplotlib stamps a creation date), so `git status` was not clean. Fixed
   by stripping the PDF timestamp; figures are now byte-identical across runs.
+
+## 2026-07-06 (issue #1 — conditional convergence)
+- Per #1, added **conditional** β-convergence with the Solow controls (investment,
+  population growth, human capital). The result flips: conditional β = −0.0131
+  (p < 0.001, R² = 0.60), an implied convergence speed of ~2.5%/yr (half-life ~28
+  years) — the classic Mankiw–Romer–Weil finding. Human capital is the strongest
+  control. So the world *does* converge, but toward country-specific steady
+  states, not a common one. Logged as D-0005.
+- Period-sensitivity check (also #1): re-estimated on 1990–2019; the conditional
+  speed is ~1.8%/yr — same story, slightly slower. Reassuring.

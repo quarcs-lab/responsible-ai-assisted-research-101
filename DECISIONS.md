@@ -109,3 +109,25 @@ overturns an earlier one, add a new entry and mark the old one *Superseded*.
   transparent — a reader sees exactly how a number becomes LaTeX.
 - **Confidence:** High — the whole pipeline runs on a minimal, pinned stack.
 - **Trail:** `code/latexout.py`, `requirements.txt`.
+
+## D-0005: Conditional convergence controls = investment, population growth, human capital
+- **Date:** 2026-07-06
+- **Status:** Accepted
+- **Decision:** Condition on the augmented-Solow determinants of the steady state,
+  entered as in Mankiw–Romer–Weil (1992): ln(investment share `csh_i`),
+  ln(`n + g + δ`) with population growth `n` from `pop`, assumed `g = 0.02`, and
+  depreciation `δ` from PWT `delta`; and ln(human capital `hc`).
+- **Context / question:** The absolute null (D-0003) does not test the Solow
+  prediction, which is convergence to each economy's *own* steady state. Issue #1
+  asks for the conditional test; which controls?
+- **Alternatives rejected:**
+  - No human capital (textbook Solow) — MRW show human capital is decisive; our
+    data agree (its coefficient is large and highly significant).
+  - Adding institutions/geography — moves beyond the Solow model this exercise
+    tests, and invites endogeneity debates outside the scope of the example.
+- **Rationale:** These are exactly the augmented-Solow steady-state determinants;
+  using them keeps the test faithful to the theory and comparable to MRW.
+- **Confidence:** High — conditional β is negative and significant (≈2.5%/yr),
+  stable in the 1990–2019 subwindow; the qualitative result is robust.
+- **Trail:** issue #1, `code/02_analyze.py` (`COND_FORMULA`),
+  `tables/convergence_regressions.tex`, PR #2.
