@@ -1,0 +1,48 @@
+# ---------------------------------------------------------------------------
+# Responsible AI-Assisted Research — .gitignore
+#
+# Principle (see CLAUDE.md): raw data is immutable truth and IS tracked here
+# (pwt110.dta is small + public). Everything a machine can REBUILD is ignored,
+# so the repository only ever contains inputs, code, and code-emitted outputs.
+# For your own project, keep large or private raw data OUT of git and document
+# how to download it instead (see data/raw/README.md).
+# ---------------------------------------------------------------------------
+
+# Derived / intermediate data — rebuilt by `python code/run_all.py`.
+# Ignore the contents but keep the folder + its README on a fresh clone.
+data/derived/*
+!data/derived/README.md
+
+# Secrets & credentials — NEVER commit these
+.env
+*.key
+*.pem
+credentials.*
+
+# LaTeX build artifacts (the PDF is built by CI and by Overleaf, not committed)
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+*-blx.bib
+manuscript.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+*.egg-info/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

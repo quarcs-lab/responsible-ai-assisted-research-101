@@ -1,0 +1,59 @@
+name: Research task / bug / validation
+description: A titled, verifiable unit of work — the ONLY way feedback enters this repo.
+title: "[TASK] <concise, indexable title>"
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are how all feedback enters this repository (practice #4). Reference
+        this issue from commits with `#<number>`, and close it with a pull request.
+        **Ask for the trail up front:** say how the result should be checkable.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type
+      options:
+        - Research task (new analysis / feature)
+        - Bug (a result or the code is wrong)
+        - Validation / robustness (verify or stress an existing result)
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What result or code does this concern? Link the commit / PR / manuscript section.
+      placeholder: "e.g. the absolute-convergence result in tables/convergence_regressions.tex (commit e4f5g6h)"
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What to do / verify
+      description: The specific change or check requested.
+    validations:
+      required: true
+  - type: textarea
+    id: trail
+    attributes:
+      label: Verifiability requirements (the trail to leave)
+      description: How should the result be checkable? Which script, output file, or number proves it?
+      placeholder: |
+        - Emit the conditional coefficient to tables/estimates.tex as \betaCond
+        - Add a conditional column to tables/convergence_regressions.tex
+        - `python code/run_all.py` must reproduce it from data/raw/ with no manual steps
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria (Definition of Done)
+      description: The checklist a human uses to close this issue.
+      value: |
+        - [ ] Code emits the output; `python code/run_all.py` reproduces it
+        - [ ] DECISIONS.md updated if a methodological choice was made
+        - [ ] LOG.md updated with a dated narrative entry
+        - [ ] A PR is opened that `Closes` this issue; CI is green
+    validations:
+      required: true

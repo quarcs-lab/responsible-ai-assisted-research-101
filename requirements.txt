@@ -1,0 +1,19 @@
+# Analysis stack for the worked example (Solow convergence on PWT 11.0).
+# Pinned for reproducibility. Works on Python 3.11-3.14 (developed on 3.14).
+#
+# Install (recommended, with uv):   uv venv && uv pip install -r requirements.txt
+# Or with plain venv + pip:          python -m venv .venv && .venv/bin/pip install -r requirements.txt
+#
+# Why this stack: statsmodels gives transparent OLS + robust (HC1) standard
+# errors; pandas reads the Stata .dta natively; a small in-repo helper
+# (code/latexout.py) turns fitted models into booktabs LaTeX tables and in-text
+# macros — no heavy/fragile table library, so students can install it on any
+# machine and see exactly how numbers become LaTeX. (pyfixest is a nice
+# alternative but pulls in numba; stargazer is another; see DECISIONS.md.)
+
+pandas==3.0.3
+numpy==2.5.1
+scipy==1.18.0
+statsmodels==0.14.6
+matplotlib==3.11.0
+pyarrow==24.0.0

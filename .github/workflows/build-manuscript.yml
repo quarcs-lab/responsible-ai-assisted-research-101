@@ -1,0 +1,46 @@
+name: build-manuscript
+
+# Compiles the paper on every change to the manuscript or its code-emitted
+# inputs, and publishes the PDF as a downloadable artifact. This guarantees the
+# paper ALWAYS builds from what is committed — a green check is the machine
+# half of the verification checklist in CLAUDE.md.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'manuscript.tex'
+      - 'references.bib'
+      - 'tables/**'
+      - 'figures/**'
+      - '.github/workflows/build-manuscript.yml'
+  pull_request:
+    paths:
+      - 'manuscript.tex'
+      - 'references.bib'
+      - 'tables/**'
+      - 'figures/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Compile manuscript.tex -> PDF (latexmk, resolves natbib/bibtex)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript.tex
+          latexmk_use_xelatex: false
+
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-pdf
+          path: manuscript.pdf
+          if-no-files-found: error
