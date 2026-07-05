@@ -17,6 +17,11 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 import config as C
 
+# Reproducibility: strip the embedded PDF creation timestamp so re-running the
+# pipeline produces byte-identical files (so `git status` stays clean — see
+# CLAUDE.md §9). Without this, matplotlib stamps /CreationDate on every save.
+PDF_META = {"CreationDate": None}
+
 
 def main() -> None:
     T = C.HORIZON
@@ -42,7 +47,7 @@ def main() -> None:
     )
     ax.grid(True, alpha=0.25)
     fig.tight_layout()
-    fig.savefig(C.FIGURES / "beta_convergence.pdf", bbox_inches="tight")
+    fig.savefig(C.FIGURES / "beta_convergence.pdf", bbox_inches="tight", metadata=PDF_META)
     plt.close(fig)
 
     # ---- Figure 2: sigma-convergence over time --------------------------- #
@@ -53,7 +58,7 @@ def main() -> None:
     ax.set_title("σ-convergence (cross-country dispersion)")
     ax.grid(True, alpha=0.25)
     fig.tight_layout()
-    fig.savefig(C.FIGURES / "sigma_convergence.pdf", bbox_inches="tight")
+    fig.savefig(C.FIGURES / "sigma_convergence.pdf", bbox_inches="tight", metadata=PDF_META)
     plt.close(fig)
 
     print(f"[03_figures] wrote beta_convergence.pdf and sigma_convergence.pdf")

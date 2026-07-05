@@ -42,3 +42,6 @@ Template:
   latexmk: 4 pages, all citations resolve. The paper reports the honest null
   (no absolute β-convergence, σ-divergence) and flags conditional convergence as
   the next step.
+- Reproducibility check caught a bug: re-running the pipeline changed the figure
+  PDFs (matplotlib stamps a creation date), so `git status` was not clean. Fixed
+  by stripping the PDF timestamp; figures are now byte-identical across runs.
